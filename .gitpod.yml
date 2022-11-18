@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Initialize dotfiles and alias
+    command: . $GITPOD_REPO_ROOT/install.sh

@@ -1,3 +1,4 @@
+
 image:
   file: .gitpod.Dockerfile
 
@@ -7,3 +8,7 @@ tasks:
 ports:
   - port: 19000-19002
     onOpen: ignore
+
+vscode:
+  extensions:
+    - humao.rest-client

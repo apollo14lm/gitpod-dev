@@ -4,3 +4,6 @@ image:
 tasks:
   - name: Initialize dotfiles and alias
     command: . $GITPOD_REPO_ROOT/install.sh
+ports:
+  - port: 19000-19002
+    onOpen: ignore

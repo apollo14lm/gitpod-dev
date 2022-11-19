@@ -30,4 +30,11 @@ RUN mkdir ${ANDROID_SDK_ROOT} \
   && yes | sdkmanager --uninstall "emulator" \
   && rm -rf /tmp/*
 
+# Node global packages
+RUN npm install --global --unsafe-perm --no-optional \
+  serverless expo-cli eas-cli \
+  serverless-python-requirements \
+  && npm cache clean --force \
+  && rm -rf /tmp/*
+
 USER gitpod

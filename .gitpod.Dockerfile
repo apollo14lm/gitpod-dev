@@ -1,5 +1,6 @@
 FROM gitpod/workspace-full:latest
 
+# Install from root user
 USER root
 
 # AWS CLI
@@ -30,11 +31,21 @@ RUN mkdir ${ANDROID_SDK_ROOT} \
   && yes | sdkmanager --uninstall "emulator" \
   && rm -rf /tmp/*
 
+# GCP gcloud cli
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] \
+  http://packages.cloud.google.com/apt cloud-sdk main" \
+  | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg \
+  | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - \
+  && apt-get update -y && apt-get install google-cloud-cli -y \
+  && rm -rf /var/lib/apt/lists/*
+
+# Switch to normal user
+USER gitpod
+
 # Node global packages
-RUN npm install --global --unsafe-perm --no-optional \
+RUN npm install --global --omit=optional \
   serverless expo-cli eas-cli \
   serverless-python-requirements \
   && npm cache clean --force \
   && rm -rf /tmp/*
-
-USER gitpod

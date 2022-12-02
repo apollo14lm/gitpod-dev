@@ -32,9 +32,7 @@ if [ -d "$UD" ]; then
 
   cd $UD/script
   ./dotfile.sh clean
-  ./dotfile.sh install
-
-  source ~/.bash_profile
+  source ./dotfile.sh install
 fi
 
 # Source user specific environment

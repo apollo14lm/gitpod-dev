@@ -32,7 +32,7 @@ if [ -d "$UD" ]; then
 
   cd $UD/script
   ./dotfile.sh clean
-  source ./dotfile.sh install || true
+  source ./dotfile.sh install
 fi
 
 # Source user specific environment

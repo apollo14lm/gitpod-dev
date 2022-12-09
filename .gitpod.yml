@@ -3,7 +3,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - command: source $GITPOD_REPO_ROOT/install.sh
+  - command: source $GITPOD_REPO_ROOT/install.sh || true
 ports:
   - port: 19000
     onOpen: ignore
